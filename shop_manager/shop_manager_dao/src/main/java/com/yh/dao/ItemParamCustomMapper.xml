@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yh.dao.ItemParamCustomMapper">
+    <select id="selectItemParamList" resultType="com.yh.custom.TbItemParamList">
+        SELECT
+          ip.id,
+          ip.item_cat_id itemCatId,
+          ip.param_data paramData,
+          ip.created, ip.updated,
+          ic.`name`
+        FROM tb_item_param ip
+        LEFT JOIN tb_item_cat ic ON ip.item_cat_id = ic.id
+    </select>
+    <delete id="BatchDelItemParam" parameterType="int[]">
+        delete
+        from
+        tb_item_param
+        <where>
+            <foreach collection="array" item="ids" open="(" close=")" separator="or">
+                id=#{ids}
+            </foreach>
+        </where>
+    </delete>
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yh.dao.ItemCustomMapper">
+    <update id="BatchDelItem" parameterType="Long[]">
+        update
+          tb_item
+        set
+          status=3
+        <where>
+            <foreach collection="array" item="ids" open="(" close=")" separator="or">
+                id=#{ids}
+            </foreach>
+        </where>
+    </update>
+    <update id="BatchInstockItem" parameterType="Long[]">
+        update
+          tb_item
+        set
+          status=2
+        <where>
+            <foreach collection="array" item="ids" open="(" close=")" separator="or">
+                id=#{ids}
+            </foreach>
+        </where>
+    </update>
+    <update id="BatchUnInstockItem" parameterType="Long[]">
+        update
+          tb_item
+        set
+          status=1
+        <where>
+            <foreach collection="array" item="ids" open="(" close=")" separator="or">
+                id=#{ids}
+            </foreach>
+        </where>
+    </update>
+</mapper>
