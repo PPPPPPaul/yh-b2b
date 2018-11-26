@@ -101,9 +101,9 @@
 		$("#itemeEditForm [name=itemParams]").val(paramJson);
 		
 		//提交到后台的ful
-		$.ajax({
+/*		$.ajax({
 		   type: "PUT",
-		   url: "//item",
+		   url: "/item/update",
 		   data: $("#itemeEditForm").serialize(),
 		   success: function(msg){
 			   $.messager.alert('提示','修改商品成功!','info',function(){
@@ -114,6 +114,20 @@
 		   error: function(){
 			   $.messager.alert('提示','修改商品失败!');
 		   }
-		});
+		});*/
+        $.post("/item/update",
+            $("#itemeEditForm").serialize(),
+            function(data){
+                if(data.status == 200){
+                    $.messager.alert('提示','修改商品成功!','info',function(){
+                        $("#itemEditWindow").window('close');
+                        $("#itemList").datagrid("reload");
+                    });
+                }else{
+                    $.messager.alert('提示',data.msg);
+                    //$.messager.alert('提示','新增商品失败!');
+                }
+            }
+        );
 	}
 </script>

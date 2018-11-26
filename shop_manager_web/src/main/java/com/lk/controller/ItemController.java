@@ -7,6 +7,7 @@ import com.yh.pojo.TbItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,6 +23,11 @@ public class ItemController {
     @ResponseBody
     public YHResult addItem(TbItem item, String desc, String itemParams){
         return itemService.addItem(item,desc,itemParams);
+    }
+    @RequestMapping("/item/update")
+    @ResponseBody
+    public YHResult updataItem(TbItem item, String desc, String itemParams){
+        return itemService.updateItem(item,desc,itemParams);
     }
     @RequestMapping("/item/list")
     @ResponseBody
@@ -42,5 +48,15 @@ public class ItemController {
     @ResponseBody
     public YHResult unInstockItem(Long[] ids){
         return itemService.unInstockItem(ids);
+    }
+    @RequestMapping("/item/desc/{id}")
+    @ResponseBody
+    public YHResult getItemDescById(@PathVariable Long id){
+        return itemService.getItemDescById(id);
+    }
+    @RequestMapping("/item/param/item/query/{id}")
+    @ResponseBody
+    public YHResult getItemParamById(@PathVariable Long id){
+        return itemService.getItemParamById(id);
     }
 }
