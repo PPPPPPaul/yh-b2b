@@ -3,11 +3,13 @@ package com.lk.service.impl;
 import com.lk.dao.TbContentCatMapper;
 import com.lk.pojo.EasyUITreeNode;
 import com.lk.pojo.TbContentCat;
+import com.lk.pojo.YHResult;
 import com.lk.service.ContentCatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,5 +29,23 @@ public class ContentCatServiceImpl implements ContentCatService {
             res.add(node);
         }
         return res;
+    }
+
+    @Override
+    public YHResult addContentCat(TbContentCat tbContentCat) {
+        Date date = new Date();
+        tbContentCat.setCreated(date);
+        tbContentCat.setUpdated(date);
+        tbContentCat.setStatus(1);
+        tbContentCat.setSortOrder(1);
+        if(tbContentCat.getParentId()>1){
+            TbContentCat parentCat = new TbContentCat();
+            parentCat.setId(tbContentCat.getParentId());
+            parentCat.setIsParent(true);
+            tbContentCatMapper.updatecontentcatbykey(parentCat);
+        }
+        tbContentCat.setIsParent(false);
+        tbContentCatMapper.insertcontentcat(tbContentCat);
+        return YHResult.ok();
     }
 }

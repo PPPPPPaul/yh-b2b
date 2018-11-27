@@ -45,7 +45,7 @@ public class ItemCatServiceImpl implements ItemCatService {
     @Override
     public ItemCatTree getItemsCatTree() {
         try {
-            String json = jedisClient.get("itemCatTemp");
+            String json = jedisClient.get(itemCatTemp);
             if(StringUtils.isNotBlank(json)){
                 ItemCatTree tree = JsonUtils.jsonToPojo(json, ItemCatTree.class);
                 return tree;
@@ -55,7 +55,7 @@ public class ItemCatServiceImpl implements ItemCatService {
         ItemCatTree tree = new ItemCatTree();
         tree.setData(list);
         try {
-            jedisClient.set("itemCatTemp",JsonUtils.objectToJson(tree));
+            jedisClient.set(itemCatTemp,JsonUtils.objectToJson(tree));
         }catch (Exception e){}
         return tree;
     }
