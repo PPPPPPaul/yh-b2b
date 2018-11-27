@@ -20,9 +20,16 @@
         FROM
             tb_content_category
         where
-            parent_id = #{pid}
+        parent_id = #{id}
     </select>
-    
+    <select id="selectbyid" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM
+        tb_content_category
+        where
+        id = #{id}
+    </select>
     <insert id="insertcontentcat" parameterType="com.lk.pojo.TbContentCat">
         insert into tb_content_category
         <trim prefix="(" suffix=")" suffixOverrides="," >

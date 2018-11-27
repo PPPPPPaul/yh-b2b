@@ -38,14 +38,27 @@ public class ContentCatServiceImpl implements ContentCatService {
         tbContentCat.setUpdated(date);
         tbContentCat.setStatus(1);
         tbContentCat.setSortOrder(1);
-        if(tbContentCat.getParentId()>1){
+        if(tbContentCat.getParentId()>0){
             TbContentCat parentCat = new TbContentCat();
             parentCat.setId(tbContentCat.getParentId());
             parentCat.setIsParent(true);
             tbContentCatMapper.updatecontentcatbykey(parentCat);
+            tbContentCat.setIsParent(false);
+        }else{
+            tbContentCat.setIsParent(true);
         }
-        tbContentCat.setIsParent(false);
         tbContentCatMapper.insertcontentcat(tbContentCat);
         return YHResult.ok();
+    }
+
+    @Override
+    public YHResult delContentCat(TbContentCat tbContentCat) {
+        tbContentCat.setStatus(0);
+        Long pid = tbContentCat.getParentId();
+        TbContentCat parentContentCat = tbContentCatMapper.selectbyid(pid);
+        parentContentCat.setIsParent(false);
+        tbContentCatMapper.updatecontentcatbykey(parentContentCat);
+        tbContentCatMapper.updatecontentcatbykey(tbContentCat);
+        return null;
     }
 }

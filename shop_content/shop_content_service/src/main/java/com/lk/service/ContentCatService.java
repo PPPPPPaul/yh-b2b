@@ -11,4 +11,5 @@ public interface ContentCatService {
     List<EasyUITreeNode> findContentCatByPid(Long pid);
     //添加内容节点
     YHResult addContentCat(TbContentCat tbContentCat);
+    YHResult delContentCat(TbContentCat tbContentCat);
 }

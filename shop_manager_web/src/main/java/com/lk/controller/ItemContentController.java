@@ -28,4 +28,9 @@ public class ItemContentController {
     public YHResult addContentCat(TbContentCat tbContentCat){
         return contentCatService.addContentCat(tbContentCat);
     }
+    @RequestMapping("/content/category/delete")
+    @ResponseBody
+    public YHResult delContentCat(TbContentCat tbContentCat){
+        return contentCatService.addContentCat(tbContentCat);
+    }
 }
