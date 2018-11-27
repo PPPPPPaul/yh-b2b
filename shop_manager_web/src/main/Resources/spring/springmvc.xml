@@ -38,4 +38,5 @@
 	<dubbo:reference interface="com.lk.service.ItemParamService" id="itemParamService" />
 	<dubbo:reference interface="com.lk.service.ItemCatService" id="itemCatService" />
 	<dubbo:reference interface="com.lk.service.ItemService" id="itemService" />
+	<dubbo:reference interface="com.lk.service.ContentCatService" id="contentCatService" />
 </beans>

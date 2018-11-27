@@ -1,4 +1,4 @@
-package com.yh.custom;
+package com.lk.pojo;
 
 
 import java.io.Serializable;

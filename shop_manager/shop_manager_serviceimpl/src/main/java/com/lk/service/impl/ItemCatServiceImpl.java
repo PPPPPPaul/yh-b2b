@@ -11,6 +11,7 @@ import com.yh.pojo.TbItemCat;
 import com.yh.pojo.TbItemCatExample;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class ItemCatServiceImpl implements ItemCatService {
     private JedisClient jedisClient;
     @Autowired
     private TbItemCatMapper tbItemCatMapper;
+    @Value("${redis.itemcattemp}")
+    private String itemCatTemp;
     @Override
     public List<EasyUITreeNode> findItemCatsByPid(Long pid) {
         TbItemCatExample example = new TbItemCatExample();
@@ -41,15 +44,19 @@ public class ItemCatServiceImpl implements ItemCatService {
 
     @Override
     public ItemCatTree getItemsCatTree() {
-        String json = jedisClient.get("ITEM_CAT_TEMP");
-        if(StringUtils.isNotBlank(json)){
-            ItemCatTree tree = JsonUtils.jsonToPojo(json, ItemCatTree.class);
-            return tree;
-        }
+        try {
+            String json = jedisClient.get("itemCatTemp");
+            if(StringUtils.isNotBlank(json)){
+                ItemCatTree tree = JsonUtils.jsonToPojo(json, ItemCatTree.class);
+                return tree;
+            }
+        }catch (Exception e){}
         List list = getItemCatsByPid(0L);
         ItemCatTree tree = new ItemCatTree();
         tree.setData(list);
-        jedisClient.set("ITEM_CAT_TEMP",JsonUtils.objectToJson(tree));
+        try {
+            jedisClient.set("itemCatTemp",JsonUtils.objectToJson(tree));
+        }catch (Exception e){}
         return tree;
     }
     private List getItemCatsByPid(Long pid){

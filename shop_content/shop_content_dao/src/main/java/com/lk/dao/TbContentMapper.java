@@ -1,4 +1,4 @@
-package com.yh.dao;
+package com.lk.dao;
 
 public interface TbContentMapper {
 }
