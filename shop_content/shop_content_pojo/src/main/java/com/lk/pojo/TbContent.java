@@ -2,11 +2,12 @@ package com.lk.pojo;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class TbContent implements Serializable {
 
-  private long id;
-  private long categoryId;
+  private Long id;
+  private Long categoryId;
   private String title;
   private String subTitle;
   private String titleDesc;
@@ -14,27 +15,24 @@ public class TbContent implements Serializable {
   private String pic;
   private String pic2;
   private String content;
-  private java.sql.Timestamp created;
-  private java.sql.Timestamp updated;
+  private Date created;
+  private Date updated;
 
-
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
-  public long getCategoryId() {
+  public Long getCategoryId() {
     return categoryId;
   }
 
-  public void setCategoryId(long categoryId) {
+  public void setCategoryId(Long categoryId) {
     this.categoryId = categoryId;
   }
-
 
   public String getTitle() {
     return title;
@@ -44,7 +42,6 @@ public class TbContent implements Serializable {
     this.title = title;
   }
 
-
   public String getSubTitle() {
     return subTitle;
   }
@@ -52,7 +49,6 @@ public class TbContent implements Serializable {
   public void setSubTitle(String subTitle) {
     this.subTitle = subTitle;
   }
-
 
   public String getTitleDesc() {
     return titleDesc;
@@ -62,7 +58,6 @@ public class TbContent implements Serializable {
     this.titleDesc = titleDesc;
   }
 
-
   public String getUrl() {
     return url;
   }
@@ -70,7 +65,6 @@ public class TbContent implements Serializable {
   public void setUrl(String url) {
     this.url = url;
   }
-
 
   public String getPic() {
     return pic;
@@ -80,7 +74,6 @@ public class TbContent implements Serializable {
     this.pic = pic;
   }
 
-
   public String getPic2() {
     return pic2;
   }
@@ -88,7 +81,6 @@ public class TbContent implements Serializable {
   public void setPic2(String pic2) {
     this.pic2 = pic2;
   }
-
 
   public String getContent() {
     return content;
@@ -98,22 +90,19 @@ public class TbContent implements Serializable {
     this.content = content;
   }
 
-
-  public java.sql.Timestamp getCreated() {
+  public Date getCreated() {
     return created;
   }
 
-  public void setCreated(java.sql.Timestamp created) {
+  public void setCreated(Date created) {
     this.created = created;
   }
 
-
-  public java.sql.Timestamp getUpdated() {
+  public Date getUpdated() {
     return updated;
   }
 
-  public void setUpdated(java.sql.Timestamp updated) {
+  public void setUpdated(Date updated) {
     this.updated = updated;
   }
-
 }
