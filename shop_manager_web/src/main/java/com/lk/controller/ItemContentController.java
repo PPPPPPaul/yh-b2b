@@ -6,7 +6,6 @@ import com.lk.pojo.YHResult;
 import com.lk.service.ContentCatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +29,7 @@ public class ItemContentController {
     }
     @RequestMapping("/content/category/delete")
     @ResponseBody
-    public YHResult delContentCat(TbContentCat tbContentCat){
-        return contentCatService.addContentCat(tbContentCat);
+    public YHResult delContentCat(Long id){
+        return contentCatService.delContentCatByid(id);
     }
 }

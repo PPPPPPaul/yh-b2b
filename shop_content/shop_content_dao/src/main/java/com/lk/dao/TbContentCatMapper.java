@@ -7,6 +7,7 @@ import java.util.List;
 public interface TbContentCatMapper {
     List<TbContentCat> selectbypid(Long pid);
     TbContentCat selectbyid(Long id);
-    void insertcontentcat(TbContentCat tbContentCat);
+    Long insertcontentcat(TbContentCat tbContentCat);
     void updatecontentcatbykey(TbContentCat tbContentCat);
+    void delcontentcatbyid(Long id);
 }

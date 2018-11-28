@@ -31,6 +31,9 @@
         id = #{id}
     </select>
     <insert id="insertcontentcat" parameterType="com.lk.pojo.TbContentCat">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            select LAST_INSERT_ID() as id
+        </selectKey>
         insert into tb_content_category
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -112,4 +115,8 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
+    <delete id="delcontentcatbyid" parameterType="java.lang.Long">
+        delete from tb_content_category
+        where id=#{id}
+    </delete>
 </mapper>
