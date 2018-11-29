@@ -31,6 +31,13 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public List<AD1Node> getBigAd(Long cid) {
-        return tbContentMapper.selectContentByCatId(cid);
+        List<AD1Node> nodes = tbContentMapper.selectContentByCatId(cid);
+        for(AD1Node node:nodes){
+            node.setWidth(670);
+            node.setWidthB(670);
+            node.setHeight(480);
+            node.setHeightB(480);
+        }
+        return nodes;
     }
 }
