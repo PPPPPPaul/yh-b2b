@@ -22,6 +22,7 @@
 	<bean name="jedisClient" class="com.lk.redisclient.impl.JedisClientSigle">
 		<property name="jedisPool" ref="jedisPool"></property>
 	</bean>
+	<!--添加solr服务器配置，以便注入到service实现类中，实现一键导入商品索引-->
 	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
         <constructor-arg name="baseURL" value="http://192.168.255.129:8080/solr"></constructor-arg>
     </bean>
