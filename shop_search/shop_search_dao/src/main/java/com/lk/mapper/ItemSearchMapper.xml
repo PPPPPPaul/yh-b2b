@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lk.mapper.ItemSearchMapper">
+    <resultMap id="Search_Item_Result" type="com.lk.pojo.ItemSearch">
+        <id column="id" property="id" jdbcType="BIGINT"></id>
+        <result column="title" property="title" jdbcType="VARCHAR"></result>
+        <result column="sell_point" property="sellPoint" jdbcType="VARCHAR"></result>
+        <result column="price" property="price" jdbcType="BIGINT"></result>
+        <result column="image" property="image" jdbcType="VARCHAR"></result>
+        <result column="category_name" property="category_name" jdbcType="VARCHAR"></result>
+        <result column="item_desc" property="item_desc" jdbcType="VARCHAR"></result>
+        <result column="status" property="status" jdbcType="BIT"></result>
+    </resultMap>
+    <select id="getSearchItem" resultMap="Search_Item_Result">
+        SELECT
+            a.id,
+            a.title,
+            a.sell_point,
+            a.price,
+            a.image,
+            b.`name` category_name,
+            c.item_desc
+        FROM
+            tb_item a
+        LEFT JOIN tb_item_cat b ON a.cid = b.id
+        LEFT JOIN tb_item_desc c ON a.id = c.item_id
+        WHERE
+            a.`status` = 1
+    </select>
+</mapper>

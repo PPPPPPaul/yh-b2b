@@ -39,6 +39,11 @@
             <artifactId>shop_content_service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.lk</groupId>
+            <artifactId>shop_search_service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!--  Spring  -->
         <dependency>
             <groupId>org.springframework</groupId>
