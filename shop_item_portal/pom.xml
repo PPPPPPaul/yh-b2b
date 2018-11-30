@@ -41,10 +41,19 @@
         </dependency>
         <dependency>
             <groupId>com.lk</groupId>
+            <artifactId>shop_search_pojo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lk</groupId>
             <artifactId>shop_search_service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!--  Spring  -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

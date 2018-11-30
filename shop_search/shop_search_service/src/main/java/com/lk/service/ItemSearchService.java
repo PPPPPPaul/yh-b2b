@@ -1,6 +1,10 @@
 package com.lk.service;
 
+import com.lk.pojo.ItemSearch;
+import com.lk.pojo.SearchResult;
 import com.lk.pojo.YHResult;
+
+import java.util.List;
 
 public interface ItemSearchService {
     /**
@@ -8,4 +12,5 @@ public interface ItemSearchService {
      * @return
      */
     YHResult importItem();
+    SearchResult itemSearch(String keyWord);
 }
